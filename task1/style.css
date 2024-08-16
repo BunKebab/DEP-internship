@@ -1,0 +1,295 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+}
+
+.navlinks {
+  width: 70vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbtn {
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: medium;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  padding-top: 50px;
+}
+
+.section {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content img {
+  width: 300px;
+  height: 300px;
+}
+
+#piece-section {
+  flex-direction: column;
+}
+
+#instruction-section {
+  flex-direction: column;
+  justify-content: start;
+}
+
+#strategies-section {
+  flex-direction: column;
+  justify-content: start;
+}
+
+#notation-section {
+  flex-direction: column;
+  justify-content: start;
+}
+
+.main .section:nth-of-type(even) {
+  color: black;
+  background-color: white;
+}
+.main .section:nth-of-type(odd) {
+  color: white;
+  background-color: black;
+}
+
+.img {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.text {
+  width: 50%;
+}
+
+.pieces {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(2, (200px, 1fr));
+  grid-template-areas:
+    "pawn kinght bishop"
+    "rook queen king";
+}
+
+.piece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+
+.piece h3 {
+  height: 10%;
+}
+
+.piece img {
+  height: 40%;
+}
+
+.piece p {
+  width: 50%;
+  text-align: center;
+}
+
+.section .piece:nth-child(odd) {
+  background-color: black;
+  color: white;
+  border: 5px solid white;
+}
+.section .piece:nth-child(even) {
+  background-color: white;
+  color: black;
+  border: 5px solid black;
+}
+
+#pawn {
+  grid-area: "pawn";
+}
+#knight {
+  grid-area: "knight";
+}
+#bishop {
+  grid-area: "bishop";
+}
+#rook {
+  grid-area: "rook";
+}
+#queen {
+  grid-area: "queen";
+}
+#king {
+  grid-area: "king";
+}
+
+.instructions {
+  width: 100%;
+  justify-content: start;
+}
+
+.strategies {
+  width: 100%;
+  justify-items: center;
+}
+
+.terms {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 5px;
+  font-size: large;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: none;
+    height: auto;
+  }
+
+  .navlinks {
+    width: 100%;
+  }
+
+  .main {
+    padding-top: 150px;
+  }
+
+  .section {
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
+  .section h1 {
+    text-align: center;
+  }
+
+  .text {
+    width: 100%;
+  }
+
+  #about img {
+    width: 100%;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .pieces {
+    grid-template-rows: repeat(6, minmax(100px, 1fr));
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "pawn"
+      "knight"
+      "bishop"
+      "rook"
+      "queen"
+      "king";
+  }
+
+  .piece {
+    aspect-ratio: 1;
+  }
+
+  .piece h3 {
+    height: 10%;
+  }
+
+  .piece img {
+    height: 40%;
+  }
+
+  .piece p {
+    width: 50%;
+    text-align: center;
+  }
+
+  #pawn {
+    grid-area: "pawn";
+  }
+  #knight {
+    grid-area: "knight";
+  }
+  #bishop {
+    grid-area: "bishop";
+  }
+  #rook {
+    grid-area: "rook";
+  }
+  #queen {
+    grid-area: "queen";
+  }
+  #king {
+    grid-area: "king";
+  }
+
+  .instructions {
+    width: 100%;
+  }
+
+  .strategies {
+    width: 100%;
+  }
+
+  .terms {
+    width: 100%;
+  }
+}

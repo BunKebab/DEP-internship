@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Chess</title>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <h1><a href="#about">Chess</a></h1>
+      <div class="navlinks">
+        <a href="#piece-section" class="link">Pieces</a>
+        <a href="#instruction-section" class="link">Rules</a>
+        <a href="#strategies-section" class="link">Strategies</a>
+        <a href="#notation-section" class="link">Notations</a>
+        <a href="https://www.chess.com/home" class="navbtn">Play</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="section" id="about">
+        <div class="img">
+          <img src="./images/chess.png" alt="" />
+        </div>
+        <div class="text">
+          <h3>Introduction to Chess</h3>
+          <p>
+            Chess is a strategic board game that has been played for centuries.
+            It is a two-player game where each player controls an army of pieces
+            with the goal of checkmating the opponent's king. Originating in
+            India around the 6th century, chess has evolved into a game of skill
+            and strategy enjoyed worldwide.
+          </p>
+        </div>
+      </div>
+      <div class="section" id="piece-section">
+        <h2>Pieces</h2>
+        <div class="pieces">
+          <div class="piece" id="pawn">
+            <h3>Pawn</h3>
+            <img src="./images/pawn.png" alt="" />
+            <p>
+              Moves forward one square but captures diagonally. On its first
+              move, it can move forward two squares.
+            </p>
+          </div>
+          <div class="piece" id="knight">
+            <h3>Knight</h3>
+            <img src="./images/knight.png" alt="" />
+            <p>
+              Moves in an L-shape: two squares in one direction and then one
+              square perpendicular. Can jump over pieces.
+            </p>
+          </div>
+          <div class="piece" id="bishop">
+            <h3>Bishop</h3>
+            <img src="./images/bishop.png" alt="" />
+            <p>Moves any number of squares diagonally.</p>
+          </div>
+          <div class="piece" id="rook">
+            <h3>Rook</h3>
+            <img src="./images/rook.png" alt="" />
+            <p>Moves any number of squares vertically or horizontally.</p>
+          </div>
+          <div class="piece" id="queen">
+            <h3>Queen</h3>
+            <img src="./images/queen.png" alt="" />
+            <p>Moves any number of squares in any direction.</p>
+          </div>
+          <div class="piece" id="king">
+            <h3>King</h3>
+            <img src="./images/king.png" alt="" />
+            <p>Moves one square in any direction.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="instruction-section">
+        <h2>How to play</h2>
+        <div class="content">
+          <div class="img">
+            <img src="./images/chess -game.png" alt="" />
+          </div>
+          <div class="instructions">
+            <ul>
+              <li>
+                Setup: The chessboard is set up with each player's pieces on the
+                two rows closest to them. The back row should be Rook, Knight,
+                Bishop, Queen, King, Bishop, Knight, Rook from left to right,
+                and pawns on the row in front.
+              </li>
+              <li>
+                Objective: The objective is to checkmate the opponent's king,
+                putting it under threat of capture with no legal moves to
+                escape.
+              </li>
+              <li>
+                <details>
+                  <summary>Special moves</summary>
+                  <ul>
+                    <li>
+                      Castling: Move the king two squares towards a rook, and
+                      the rook moves to the square over which the king crossed.
+                    </li>
+                    <li>
+                      En Passant: A pawn capturing a pawn that has moved two
+                      squares forward from its starting position.
+                    </li>
+                    <li>
+                      Promotion: A pawn reaching the opponent's back row can be
+                      promoted to any other piece, typically a queen.
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="strategies-section">
+        <h2>Strategies</h2>
+        <div class="content">
+          <div class="img">
+            <img src="./images/chess-strategy.png" alt="" />
+          </div>
+          <div class="strategies">
+            <ul>
+              <li>
+                <strong>Control the Center:</strong> Dominating the central
+                squares allows greater mobility for your pieces.
+              </li>
+              <li>
+                <strong>Develop Your Pieces:</strong> Move your knights and
+                bishops out early to control the board.
+              </li>
+              <li>
+                <strong>King Safety:</strong> Ensure your king is safe,
+                typically by castling early.
+              </li>
+              <li>
+                <strong>Plan Ahead:</strong> Think several moves ahead and
+                anticipate your opponent's moves.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="notation-section">
+        <h1>Chess notation and terms</h1>
+        <div class="content">
+          <div class="img">
+            <img src="./images/chess-notation.png" alt="" />
+          </div>
+          <div class="text">
+            <p>
+              Chess notation is a system used to record and describe the moves
+              in a game. Each square on the board is identified by a unique
+              coordinate. For example, the bottom-left square is a1, and the
+              top-right square is h8. Moves are recorded with the piece's
+              abbreviation followed by the destination square. For example, Nf3
+              means a knight moves to the f3 square.
+            </p>
+          </div>
+        </div>
+        <div class="terms">
+          <strong>Common terms</strong>
+          <ul>
+            <li>
+              <strong>Check:</strong> The king is under threat of capture.
+            </li>
+            <li>
+              <strong>Checkmate:</strong> The king is in check and cannot
+              escape.
+            </li>
+            <li>
+              <strong>Stalemate:</strong> The game ends in a draw as a player
+              has no legal moves but is not in check.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
