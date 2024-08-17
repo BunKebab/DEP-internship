@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { useDispatch } from "react-redux";
 import { editPost, reset } from "../actions/PostSlice";
 
@@ -13,13 +15,6 @@ const EditPostForm = ({ post }) => {
 
   const { newBody } = formData;
 
-  const setInput = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   const openModal = () => {
     setIsOpen(true);
   };
@@ -28,7 +23,14 @@ const EditPostForm = ({ post }) => {
     setIsOpen(false);
   };
 
-  const dispatchEdit = async (e) => {
+  const handleQuillChange = (value) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      newBody: value, // ReactQuill provides the updated HTML content directly
+    }));
+  };
+
+  const dispatchEdit = (e) => {
     e.preventDefault();
     const postId = post._id;
     dispatch(editPost({ postId, newBody }));
@@ -43,25 +45,23 @@ const EditPostForm = ({ post }) => {
     <>
       <button
         onClick={openModal}
-        className="bg-gray-600 text-white font-bold p-3 rounded-full"
+        className="bg-gray-600 text-white font-bold p-3 rounded-full w-full"
       >
         Edit Post
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white border border-gray-600 rounded-lg p-3 gap-3">
+          <div className="bg-white border border-gray-600 rounded-lg p-3 gap-3 w-1/2">
             <h2 className="text-xl font-bold">Edit Post</h2>
             <br />
             <form>
-              <div className="flex flex-col items-start justify-center">
-                <input
-                  onChange={setInput}
+              <div className="flex flex-col items-start justify-center w-full">
+                <ReactQuill
                   value={newBody}
-                  type="textarea"
-                  name="newBody"
-                  id="newBody"
-                  className="rounded-full border border-gray-600 p-3 w-full"
+                  onChange={handleQuillChange}
+                  theme="snow"
+                  className="w-full"
                 />
               </div>
             </form>

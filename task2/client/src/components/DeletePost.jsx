@@ -26,7 +26,7 @@ const DeletePost = ({ post }) => {
     <>
       <button
         onClick={openModal}
-        className="bg-red-500 text-white font-bold p-3 rounded-full"
+        className="bg-red-500 text-white font-bold p-3 rounded-full w-full"
       >
         Delete
       </button>

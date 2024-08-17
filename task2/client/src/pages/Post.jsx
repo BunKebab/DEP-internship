@@ -6,13 +6,17 @@ const Post = () => {
   const { post } = location.state || {};
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full gap-3">
-      <div className="flex items-center justify-center text-center w-full h-1/3 px-3">
-      <h1 className="font-bold text-2xl mb-3">{post.title}</h1>
+    <div className="flex flex-col items-center justify-start w-full h-full gap-6 p-6">
+      <div className="w-full text-center mb-4">
+        <h1 className="font-bold text-3xl mb-2">{post.title}</h1>
+        <hr className="border-t-2 border-gray-600 w-2/3 mx-auto" />
       </div>
-      <br />
-      <div className="flex items-start justify-start w-full h-full px-10 pt-3">
-      <p className="text-left">{post.body}</p>
+
+      <div className="w-full max-w-4xl bg-white shadow-md rounded-lg p-8 overflow-y-auto">
+        <div
+          className="prose lg:prose-lg text-gray-800"
+          dangerouslySetInnerHTML={{ __html: post.body }}
+        />
       </div>
     </div>
   );
