@@ -6,10 +6,10 @@ const {
   addProduct,
   deleteProduct,
 } = require("../controllers/ProductController");
-const { protect } = require("../middleware/AuthMiddleware");
+const { protect, adminOnly } = require("../middleware/AuthMiddleware");
 
 router.get("/products", getProducts);
-router.post("/products/add", protect, addProduct);
-router.delete("/products/:id", protect, deleteProduct);
+router.post("/products/add", adminOnly, protect, addProduct);
+router.delete("/products/:id", adminOnly, protect, deleteProduct);
 
 module.exports = router;
