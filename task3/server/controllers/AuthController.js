@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
 const User = require("../models/UserModel");
 
 const generateToken = (id) => {
@@ -14,7 +15,7 @@ const register = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "please enter your credentials" });
   }
 
-  const checkUser = await user.findOne({ email: email });
+  const checkUser = await User.findOne({ email });
   if (checkUser) {
     return res
       .status(400)
@@ -22,7 +23,7 @@ const register = asyncHandler(async (req, res) => {
   }
 
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(salt, password);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   const user = await User.create({
     email,
@@ -34,6 +35,7 @@ const register = asyncHandler(async (req, res) => {
     id: user._id,
     email: user.email,
     name: user.name,
+    role: user.role,
     token: generateToken(user._id),
   });
 });
@@ -58,6 +60,7 @@ const login = asyncHandler(async (req, res) => {
     id: user._id,
     name: user.name,
     email: user.email,
+    role: user.role,
     token: generateToken(user._id),
   });
 });
@@ -90,15 +93,16 @@ const updatePassword = asyncHandler(async (req, res) => {
 });
 
 const getUser = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
+  const { _id, name, email, role } = await User.findById(req.user.id);
   if (!_id) {
     return res.status(404).json({ message: "user not found" });
   }
 
   return res.status(200).json({
     id: _id,
-    name,
-    email,
+    name: name,
+    email: email,
+    role: role,
   });
 });
 

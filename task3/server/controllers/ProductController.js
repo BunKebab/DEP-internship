@@ -13,6 +13,7 @@ const getProducts = asyncHandler(async (req, res) => {
 
 const addProduct = asyncHandler(async (req, res) => {
   const { name, description, price, pictures } = req.body;
+  console.log(name, description, price, pictures);
   if (!name || !description || !price || !pictures) {
     return res.status(400).json({ message: "please enter all credentials" });
   }

@@ -25,7 +25,15 @@ export const addProduct = createAsyncThunk(
   "products/add",
   async (productData, thunkAPI) => {
     try {
-      const response = await axios.post(API_URL + "add", productData);
+      const token = thunkAPI.getState().auth.user.token;
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.post(`${API_URL}add`, productData, config);
       return response.data;
     } catch (error) {
       const message =
