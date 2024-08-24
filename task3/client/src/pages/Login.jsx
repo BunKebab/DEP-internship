@@ -15,17 +15,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (isSuccess) {
-      if (user.role === "Customer") {
-        navigate("/");
-      } else {
-        navigate("/dashboard");
-      }
+    if (isSuccess || user) {
+      navigate("/")
     }
     if (isError) {
       toast.error(message);
     }
-  }, [isSuccess, isError, message, navigate]);
+  }, [user, isSuccess, isError, message, navigate]);
 
   useEffect(() => {
     dispatch(reset());

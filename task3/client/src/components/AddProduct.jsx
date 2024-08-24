@@ -9,7 +9,7 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [pictures, setPictures] = useState([]);
+  const [images, setImages] = useState([]);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -23,7 +23,7 @@ const AddProduct = () => {
       base64Images.push(base64);
     }
 
-    setPictures(base64Images);
+    setImages(base64Images);
   };
 
   const readFileAsBase64 = (file) => {
@@ -42,13 +42,13 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const productData = { name, description, price, pictures };
+    const productData = { name, description, price, images };
     dispatch(addProduct(productData));
     dispatch(reset());
     setName("");
     setDescription("");
     setPrice("");
-    setPictures([]);
+    setImages([]);
     toggleModal();
   };
 
@@ -56,7 +56,7 @@ const AddProduct = () => {
     <>
       <button
         onClick={toggleModal}
-        className="bg-green-600 text-gray-100 font-bold p-3 rounded-lg w-full"
+        className="bg-green-600 text-gray-100 font-bold p-3 rounded-lg w-full mt-3"
       >
         Add product
       </button>

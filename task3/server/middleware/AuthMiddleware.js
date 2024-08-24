@@ -37,17 +37,7 @@ const adminOnly = asyncHandler(async (req, res, next) => {
   }
 });
 
-const customerOnly = asyncHandler(async (req, res, next) => {
-  if (req.user && req.user.role === "Customer") {
-    next();
-  } else {
-    res.status(401);
-    throw new Error("access denied. Customer only");
-  }
-});
-
 module.exports = {
   protect,
   adminOnly,
-  customerOnly,
 };

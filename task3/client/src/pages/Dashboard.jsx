@@ -21,7 +21,7 @@ const Dashboard = () => {
     if (!user.role === "Admin") {
       navigate("/");
     }
-  }, [navigate, user]);
+  }, [user, navigate]);
 
   return (
     <div className="flex items-center justify-start gap-3 w-full h-full bg-gray-100 text-green-600">

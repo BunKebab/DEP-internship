@@ -12,18 +12,47 @@ const Navbar = () => {
         <Link to={"/"}>E-commerce</Link>
       </div>
       <div className="navbar-end flex items-center justify-end gap-5 w-1/4">
-        <Link
-          to={"/products"}
-          className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
-        >
-          Products
-        </Link>
-        <Link
-          to={"/cart"}
-          className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
-        >
-          Cart
-        </Link>
+        {user ? (
+          user.role === "Customer" ? (
+            <>
+              <Link
+                to={"/products"}
+                className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
+              >
+                Products
+              </Link>
+              <Link
+                to={"/cart"}
+                className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
+              >
+                Cart
+              </Link>
+              <Link
+                to={"/my-orders"}
+                className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
+              >
+                Orders
+              </Link>
+            </>
+          ) : (
+            <></>
+          )
+        ) : (
+          <>
+            <Link
+              to={"/products"}
+              className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
+            >
+              Products
+            </Link>
+            <Link
+              to={"/cart"}
+              className="hover:bg-green-600 hover:text-gray-100 hover:p-3 hover:underline hover:rounded-lg"
+            >
+              Cart
+            </Link>
+          </>
+        )}
         {user ? (
           <Options />
         ) : (

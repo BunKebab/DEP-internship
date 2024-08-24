@@ -2,31 +2,39 @@ const asyncHandler = require("express-async-handler");
 const Order = require("../models/OrderModel");
 
 const getAllOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find();
+  const orders = await Order.find().populate("user", "name").populate({
+    path: "products.item",
+    select: "name price",
+  });
+
   if (!orders) {
-    return res.status(400).json({ message: "orders not found" });
+    return res.status(400).json({ message: "Orders not found" });
   }
 
   return res.status(200).json(orders);
 });
 
 const getUserOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ userId: req.user.id });
+  const orders = await Order.find({ user: req.user.id }).populate({
+    path: "products.item",
+    select: "name price",
+  });
+
   if (!orders) {
-    return res.status(400).json({ message: "orders not found" });
+    return res.status(400).json({ message: "Orders not found" });
   }
 
   return res.status(200).json(orders);
 });
 
 const makeOrder = asyncHandler(async (req, res) => {
-  const { userId, products, paymentMethod, total, shippingInfo } = req.body;
-  if (!userId || !products || !paymentMethod || !total || !shippingInfo) {
-    return res.status(404).json({ message: "missing required fields" });
+  const { user, products, paymentMethod, total, shippingInfo } = req.body;
+  if (!user || !products || !paymentMethod || !total || !shippingInfo) {
+    return res.status(400).json({ message: "missing required fields" });
   }
 
   const order = await Order.create({
-    userId,
+    user,
     products,
     paymentMethod,
     total,
@@ -36,7 +44,7 @@ const makeOrder = asyncHandler(async (req, res) => {
 });
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
-  const orderId = req.params._id;
+  const orderId = req.params.id;
   const order = await Order.findOne({ _id: orderId });
   if (!order) {
     return res.status(400).json({ message: "order not found" });
@@ -57,7 +65,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 });
 
 const cancelOrder = asyncHandler(async (req, res) => {
-  const orderId = req.params._id;
+  const orderId = req.params.id;
   const order = await Order.findOne({ _id: orderId });
   if (!order) {
     return res.status(400).json({ message: "order not found" });

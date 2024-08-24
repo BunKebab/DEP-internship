@@ -9,7 +9,7 @@ const {
 const { protect, adminOnly } = require("../middleware/AuthMiddleware");
 
 router.get("/", getProducts);
-router.post("/add", adminOnly, protect, addProduct);
-router.delete("/:id/delete", adminOnly, protect, deleteProduct);
+router.post("/add", protect, adminOnly, addProduct);
+router.delete("/:id/delete", protect, adminOnly, deleteProduct);
 
 module.exports = router;
