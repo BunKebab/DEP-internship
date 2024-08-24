@@ -12,8 +12,8 @@ const getProducts = asyncHandler(async (req, res) => {
 });
 
 const addProduct = asyncHandler(async (req, res) => {
-  const { name, description, price, images } = req.body;
-  if (!name || !description || !price || !images) {
+  const { name, description, price, image } = req.body;
+  if (!name || !description || !price || !image) {
     return res.status(400).json({ message: "please enter all credentials" });
   }
 
@@ -21,7 +21,7 @@ const addProduct = asyncHandler(async (req, res) => {
     name,
     description,
     price,
-    images,
+    image,
   });
   return res.status(200).json(product);
 });

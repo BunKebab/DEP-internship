@@ -14,11 +14,11 @@ const CartItem = ({ item }) => {
       return;
     }
     setQuantity(newQuantity);
-    dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
+    dispatch(updateQuantity({ _id: item._id, quantity: newQuantity }));
   };
 
   const handleRemoveItem = () => {
-    dispatch(removeFromCart(item.id));
+    dispatch(removeFromCart(item._id));
     toast.success("Item removed from cart");
   };
 
@@ -26,7 +26,7 @@ const CartItem = ({ item }) => {
     <div className="flex items-center justify-between p-3">
       <div className="flex items-center gap-3">
         <img
-          src={item.images[0]}
+          src={item.image}
           alt={item.name}
           className="w-20 h-20 object-cover rounded-lg"
         />

@@ -9,21 +9,15 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState(null);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const convertToBase64 = async (files) => {
-    const base64Images = [];
-
-    for (const file of files) {
-      const base64 = await readFileAsBase64(file);
-      base64Images.push(base64);
-    }
-
-    setImages(base64Images);
+  const convertToBase64 = async (file) => {
+    const base64Image = await readFileAsBase64(file);
+    setImage(base64Image);
   };
 
   const readFileAsBase64 = (file) => {
@@ -36,19 +30,19 @@ const AddProduct = () => {
   };
 
   const handleFileChange = async (e) => {
-    const files = e.target.files;
-    await convertToBase64(files);
+    const file = e.target.files[0];
+    await convertToBase64(file);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const productData = { name, description, price, images };
+    const productData = { name, description, price, image };
     dispatch(addProduct(productData));
     dispatch(reset());
     setName("");
     setDescription("");
     setPrice("");
-    setImages([]);
+    setImage(null);
     toggleModal();
   };
 
@@ -99,14 +93,13 @@ const AddProduct = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-1 text-left mt-1">
-                  <label>Product images</label>
+                  <label>Product image</label>
                   <input
                     type="file"
                     accept="image/*"
                     className="border border-green-300 bg-gray-100 text-gray-600 rounded-lg p-3"
                     multiple
                     onChange={handleFileChange}
-                    required
                   />
                 </div>
               </form>

@@ -16,20 +16,10 @@ const ProductDetails = () => {
         <div className="flex flex-row text-left gap-3">
           <div className="flex-1">
             <img
-              src={product.images[0]}
+              src={product.image}
               alt={product.name}
               className="w-2/3 rounded-lg aspect-square object-cover"
             />
-            <div className="mt-3 flex gap-3">
-              {product.images.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`${product.name} image ${index + 1}`}
-                  className="w-16 h-16 object-cover rounded-lg cursor-pointer border-2 border-green-600"
-                />
-              ))}
-            </div>
           </div>
           <div className="flex-1 flex flex-col justify-between">
             <p className="text-lg text-gray-600">{product.description}</p>

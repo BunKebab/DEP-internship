@@ -29,7 +29,7 @@ const Cart = () => {
         ) : (
           <div>
             {items.map((item) => (
-              <CartItem key={item.id} item={item} />
+              <CartItem key={item._id} item={item} />
             ))}
             <div className="flex justify-between mt-3">
               <button
@@ -39,7 +39,7 @@ const Cart = () => {
                 Clear Cart
               </button>
               <span className="text-xl font-bold text-green-600">
-                Total: {totalPrice} Rs
+                Total: {totalPrice}Rs
               </span>
               <Link to="/checkout">
                 <button className="bg-green-600 text-gray-100 font-bold p-3 rounded-lg">

@@ -26,7 +26,7 @@ const UserOrders = () => {
   };
 
   return (
-    <div className="w-full h-full text-center p-3 bg-gray-100 text-green-600">
+    <div className="w-full h-full text-center p-3 bg-gray-100 text-green-600 overflow-auto">
       <h1 className="text-2xl font-bold mb-3">Your Orders</h1>
       {orders.length === 0 ? (
         <p>You have no orders yet.</p>
