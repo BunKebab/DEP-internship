@@ -28,7 +28,7 @@ const Chat = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-gray-50 border border-gray-300 shadow-lg">
+    <div className="flex flex-col h-full w-full mx-auto bg-gray-100 border border-gray-600 rounded-lg shadow-lg">
       <Messages messages={messages} />
       <MessageBox userName={userName} />
     </div>

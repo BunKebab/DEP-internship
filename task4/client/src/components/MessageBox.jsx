@@ -4,7 +4,8 @@ import socket from "../socket";
 const MessageBox = ({ userName }) => {
   const [message, setMessage] = useState("");
 
-  const sendMessage = () => {
+  const sendMessage = (e) => {
+    e.preventDefault();
     if (message.trim()) {
       socket.emit("message", { text: message, sender: userName });
       setMessage("");
@@ -12,21 +13,21 @@ const MessageBox = ({ userName }) => {
   };
 
   return (
-    <div className="flex p-4 border-t border-gray-300 bg-gray-100">
+    <form className="flex p-3 bg-gray-100 gap-3">
       <input
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Type a message"
-        className="flex-1 p-2 border border-gray-300 rounded-l-md"
+        className="flex-1 p-3 border border-gray-600 rounded-lg text-gray-600"
       />
       <button
         onClick={sendMessage}
-        className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
+        className="p-3 bg-blue-600 text-white rounded-lg"
       >
         Send
       </button>
-    </div>
+    </form>
   );
 };
 
